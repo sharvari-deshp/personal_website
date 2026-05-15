@@ -1,2 +1,2 @@
-# personal_website
-Contains code for my personal website/portfolio.
+#Personal Website Code
+The following GitHub repository contains the code for my personal website. 
