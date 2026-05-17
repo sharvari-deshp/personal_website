@@ -36,9 +36,8 @@
             -webkit-backdrop-filter: var(--filter-glass3d); 
             backdrop-filter: var(--filter-glass3d); 
             background-color: var(--color-glass3d); 
-            background-image: var(--noise-glass3d); 
-            background-size: 100px; 
-            background-repeat: repeat; 
+            background-size: 100%, 100px; 
+            background-repeat: no-repeat, repeat;
         }
 
         .glass3d::after { 
@@ -69,14 +68,15 @@
             width: 200px; 
             height: 300px;
             padding: 12px 28px;
-            border-radius: 14px;
-            border: none;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px; 
             color: white;
             font-family: sans-serif; 
             background: rgba(255, 255, 255, 0.1); 
-            overflow: visible; }
+            overflow: visible; 
+        }
 
         .work {position: fixed;
             top: 90px; 
@@ -84,8 +84,8 @@
             width: 300px; 
             height: 300px;
             padding: 12px 28px;
-            border-radius: 14px;
-            border: none;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px; 
             color: white;
@@ -99,8 +99,8 @@
             width: 300px; 
             height: 300px;
             padding: 12px 28px;
-            border-radius: 14px;
-            border: none;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px; 
             color: white;
@@ -114,8 +114,8 @@
             width: 300px; 
             height: 300px;
             padding: 12px 28px;
-            border-radius: 14px;
-            border: none;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px; 
             color: white;
@@ -129,8 +129,8 @@
             width: 300px; 
             height: 300px;
             padding: 12px 28px;
-            border-radius: 14px;
-            border: none;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px; 
             color: white;
@@ -138,7 +138,7 @@
             background: rgba(255, 255, 255, 0.1); 
             overflow: visible; }
 
-        /*my image code*/
+        /*profile picture code*/
         img {
             top: 150px; 
             left: 235px; 
@@ -147,16 +147,10 @@
             object-fit: cover;
             border-radius: 50%;
             position: relative;
-            z-index: 5;}
+            z-index: 5;
+    
+        }
 
-            /*
-            .container {
-                display: flex;
-                justify-content: center; 
-                align-items: center;     
-                height: 100vh;           
-                }
-                */
 
     </style>
 
@@ -164,9 +158,10 @@
 
 <body>
 
-  <video autoplay muted loop playsinline>
+  <video id="bg" autoplay muted loop playsinline>
     <source src="media/backgroundVideo.mp4" type="video/mp4">
   </video>
+
 
   <button class = "glass3d intro"><span>Brief Paragraph Introduction</span></button>
 
@@ -180,8 +175,6 @@
 
   <img src="media/profilepicture.jpeg" alt="Profile Picture">
 
-  <script>
-</script>
 
 </body>
 </html>
