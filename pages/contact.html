@@ -8,7 +8,15 @@
     <style>
         * { font-family: 'Outfit', sans-serif; }
 
-        body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
 
         video { position: fixed; top: -1px; left: -1px; width: 105%; height: 105%; object-fit: cover; }
 
@@ -57,6 +65,7 @@
         }
         .glass3d > * { position: relative; z-index: 6; }
  
+        
         .panel {
             position: fixed;
             padding: 12px 28px;
@@ -67,7 +76,7 @@
             font-size: 15px;
             color: white;
             overflow: visible;
-            transition: transform 0.2s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease; 
         }
 
         .main { 
@@ -92,7 +101,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
 
         .back-btn:hover {
@@ -107,7 +116,39 @@
 
         .back   { left: 900px; top: 735px;}
 
+        .fade { 
+            opacity: 0 !important; 
+            pointer-events: none; }
 
+        
+        .submit-btn {
+            position:absolute; 
+            z-index:10; 
+            top: 635px; 
+            left: 670px; 
+            padding:10px 32px; 
+            border-radius:40px; 
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.2);
+            font-size:14px; 
+            font-weight:600; 
+            letter-spacing:1px; 
+            overflow: visible;
+            cursor:pointer;
+            color:white !important;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .submit-btn > * {
+            position:relative;
+            z-index:10;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.15);
+        }
 
 
     </style>
@@ -119,14 +160,85 @@
             <source src="../media/backgroundVideo.mp4" type="video/mp4">
         </video>
         </a>
+        
 
-    <button class="glass3d panel main"><span>sample text</span></button>
+<button class="glass3d panel main"><span style="display:flex; flex-direction:column; height:100%;">
+
+    <b style="font-size:30px; text-align:center; padding-top:3.5rem;">Contact Me</b>
+
+    <span style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+    <form action="https://formspree.io/f/xgoqprnl" method="POST" style="display:flex; flex-direction:column; gap:80px;">
+        <div style="display:flex; gap:25px;">
+            <div>
+                <label style="font-size:15px; color:rgba(255,255,255, 1);"><b>First Name</b></label>
+                <input type="text" name="first_name" style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.4); color:white; padding:6px 0; outline:none; font-size:14px; box-sizing:border-box;text-align:center; gap: 20 px;">
+            </div>
+            <div>
+                <label style="font-size:15px; color:rgba(255,255,255, 1);"><b>Last Name</b></label>
+                <input type="text" name="last_name" style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.4); color:white; padding:6px 0; outline:none; font-size:14px; box-sizing:border-box;text-align:center;">
+            </div>
+        </div>
+
+        <div>
+            <label style="font-size:15px; color:rgba(255,255,255,1);"><b>Email (Required)</b></label>
+            <input type="email" name="email" required style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.4); color:white; padding:6px 0; outline:none; font-size:14px; box-sizing:border-box;text-align:center;">
+        </div>
+
+        <div>
+            <label style="font-size:15px; color:rgba(255,255,255,1);margin-top:-12px;"><b>Message (Required)</b></label>
+            <textarea name="message" required style="width:100%; height:120px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.4); border-radius:12px; color:white; padding:20px; outline:none; font-size:14px; box-sizing:border-box; resize:none;text-align:center;margin-bottom:70px;margin-top:18px;"></textarea>
+        </div>
+
+       <button type="submit" class="submit-btn">SUBMIT</button>
+    <div id="success-message" style="display:none; position:absolute; z-index:9999; top:685px; left:635px; color:white; font-weight:400; transition: opacity 1.5s ease; opacity: 0;">✅ Thanks for reaching out! </div>
+    </form>
+    </span>
+
+</span></button>
+
+    
     
     <a href="../main.html" >
         <button class="glass3d back-btn back">
             <img src="../media/back.png" alt="Back">
         </button>
     </a>
+
+
+<script>
+    document.querySelector("form").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+
+        await fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+        });
+
+        const msg = document.getElementById("success-message");
+
+        msg.style.display = "block";
+        msg.style.opacity = "1";
+
+        setTimeout(() => {
+            msg.style.opacity = "0";
+        }, 3000);
+        form.reset();
+    });
+
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.href;
+            document.querySelectorAll('.panel, .back-btn').forEach(el => {
+                el.classList.add('fade');
+            });
+            setTimeout(() => { window.location.href = href; }, 400);
+        });
+    });
+</script>
 
   </body>
 </html>
