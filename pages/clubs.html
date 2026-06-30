@@ -281,24 +281,31 @@
         </div>
     </div>
     
-    <a href="../index.html" >
+    <a href="../" >
         <button class="glass3d back-btn back">
             <img src="../media/back.png" alt="Back">
         </button>
     </a>
 
     <script>
-       document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll("a[href]").forEach(link => {
+            link.addEventListener("click", function(e) {
+                const href = this.getAttribute("href");
+
+                if (!href || href === "#") return;
+
                 e.preventDefault();
-                const href = this.href;
-                document.querySelectorAll('.panel, .back-btn').forEach(el => {
-                    el.classList.add('fade');
+
+                document.querySelectorAll(".panel, .back-btn").forEach(el => {
+                    el.classList.add("fade");
                 });
-                setTimeout(() => { window.location.href = href; }, 400);
+
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 400);
             });
         });
-    </script>
+</script>
 
   </body>
 </html>
