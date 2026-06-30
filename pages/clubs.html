@@ -68,24 +68,33 @@
         
         .panel {
             position: fixed;
-            padding: 12px 28px;
+            /*padding: 12px 28px;*/
             border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px;
             color: white;
-            overflow: visible;
+            /*overflow: visible; */
             transition: transform 0.4s ease, opacity 0.4s ease; 
+            padding: 0; 
         }
 
         .main { 
             top: 50px; 
             left: 475px; 
             width: 500px; 
-            height: 675px; 
-            font-size: 16px; 
+            height: 675px;
+            font-size: 16px;
+            text-align: left;
+            overflow: hidden;
+            cursor: default;
             font-family: Verdana, Geneva, Tahoma, sans-serif; }
+
+        * { 
+            font-family: 'Outfit', sans-serif;
+            box-sizing: border-box;
+        }
 
 
         .back-btn {
@@ -114,13 +123,106 @@
             object-fit: contain;
         }
 
-        .back   { left: 900px; top: 735px;}
+        .back   { 
+            left: 900px; 
+            top: 735px;
+        }
 
         .fade { 
             opacity: 0 !important; 
             pointer-events: none; }
 
 
+        .main hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.4);
+            margin: 20px 0;
+        }
+
+        .main ul {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .main li {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .main h2 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .main p {
+            color: white;
+            margin-top: 0;
+        }
+
+        .main-content {
+            height: calc(100% - 60px);
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 50px;
+            /*margin-right: 50px;*/
+
+            /*overflow-y: auto;*/
+            overflow-x: hidden;
+
+            padding-right: 50px;
+
+            scrollbar-width: none;      /* Firefox */
+            -ms-overflow-style: none;   /* old Edge */
+        }
+
+        .main-content::-webkit-scrollbar {
+            width: 0;
+            display: none;
+        }
+
+
+        .experience {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .experience-list{
+        margin-top: 10px;
+        padding-left: 50px;
+        }
+
+        .exp-icon {
+            width: 55px;
+            height: 55px;
+
+            padding: 2px;
+
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .exp-content {
+            flex: 1;
+        }
+
+        .company {
+            margin: 4px 0;
+        }
+
+        .date {
+            margin: 0 0 14px;
+            opacity: 0.85;
+        }
+
+        .exp-content h2 {
+            margin: 0;
+        }
     </style>
   </head>
 
@@ -131,7 +233,53 @@
         </video>
         </a>
 
-    <button class="glass3d panel main"><span>sample text</span></button>
+    <div class="glass3d panel main">
+        <div class="main-content">
+
+            <div class="experience">
+    <img src="../media/audioamp.png" class="exp-icon" alt="sharvari">
+
+    <div class="exp-content">
+        <h2>Data & Engineering Intern</h2>
+        <p><i>OceanFirst Bank, Summer 2026</i></p>
+
+            </div>
+        </div>
+
+    <ul class="experience-list">
+            <li>Developed data quality and monitoring alerts on Databricks.</li>
+            <li>Debugged, extracted, and analyzed financial datasets.</li>
+            <p><b>___________________________________________</b></p>
+    </ul>
+
+    <div class="experience">
+    <img src="../media/profilepicture.jpeg" class="exp-icon" alt="sharvari">
+
+       <div class="exp-content">
+        <h2>Data & Engineering Intern</h2>
+        <p><i>OceanFirst Bank, Summer 2026</i></p>
+
+            </div>
+        </div>
+
+    <ul class="experience-list">
+            <li>Developed data quality and monitoring alerts on Databricks.</li>
+            <li>Debugged, extracted, and analyzed financial datasets.</li>
+    </ul>
+
+
+        <hr>
+
+        <h2>Another Experience</h2>
+        <p><i>Company Name</i></p>
+
+        <ul>
+            <li>Bullet 1</li>
+            <li>Bullet 2</li>
+        </ul>
+
+        </div>
+    </div>
     
     <a href="../index.html" >
         <button class="glass3d back-btn back">
