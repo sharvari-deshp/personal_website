@@ -172,7 +172,6 @@
         <source src="media/backgroundVideo.mp4" type="video/mp4">
     </video>
  
-
     <button class="glass3d intro-panel intro"><span>Hi! I'm <b>Sharvari Deshpande</b>, a Computer Engineering student at Purdue's Honors College graduating May 2027. I'm interested in software development, and entrepreneurship.</span></button>
  
      <a href="pages/work.html">
@@ -185,12 +184,12 @@
             <img src="media/Projects.png" alt="icons">
             <span>Projects</span></button>
     </a>
-    <a href="pages/clubs.html">
+    <a href="/pages/clubs.html">
         <button class="glass3d panel clubs">
             <img src="media/Clubs and Organizations.png" alt="icons">
             <span>Clubs & Organizations</span></button>
     </a>
-    <a href="pages/contact.html">
+    <a href="/pages/contact.html">
         <button class="glass3d panel contact">
             <img src="media/envelope-contactme.png" alt="mail">
             <span>Contact Me!</span>
@@ -227,6 +226,12 @@
                 });
                 setTimeout(() => { window.location.href = href; }, 400);
             });
+        });
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.querySelectorAll('.fade').forEach(el => el.classList.remove('fade'));
+            }
         });
     </script>
 
