@@ -6,7 +6,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
-        * { font-family: 'Outfit', sans-serif; }
+        * { 
+            font-family: 'Outfit', sans-serif;
+            box-sizing: border-box;
+        }
 
         body { 
             margin: 0; 
@@ -64,29 +67,29 @@
                 inset 0 0 0.25px 0.5px hsl(205 20% 90% / 0.03);
         }
         .glass3d > * { position: relative; z-index: 6; }
- 
-        
+
         .panel {
             position: fixed;
-            padding: 12px 28px;
             border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 15px;
             color: white;
-            overflow: visible;
             transition: transform 0.4s ease, opacity 0.4s ease; 
+            padding: 0; 
         }
 
         .main { 
             top: 50px; 
             left: 475px; 
             width: 500px; 
-            height: 675px; 
-            font-size: 16px; 
+            height: 675px;
+            font-size: 16px;
+            text-align: left;
+            overflow: hidden;
+            cursor: default;
             font-family: Verdana, Geneva, Tahoma, sans-serif; }
-
 
         .back-btn {
             position: fixed;
@@ -114,43 +117,182 @@
             object-fit: contain;
         }
 
-        .back   { left: 900px; top: 735px;}
+        .back   { 
+            left: 900px; 
+            top: 735px;
+        }
 
         .fade { 
             opacity: 0 !important; 
             pointer-events: none; }
 
+        .main hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.4);
+            margin: 20px 0;
+        }
 
+        .main ul {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .main li {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .main h2 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .main p {
+            color: white;
+            margin-top: 0;
+        }
+
+        .main-content {
+            height: calc(100% - 60px);
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 50px;
+            overflow-x: hidden;
+            padding-right: 50px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .main-content::-webkit-scrollbar {
+            width: 0;
+            display: none;
+        }
+
+        .experience {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .experience-list {
+            margin-top: 10px;
+            padding-left: 50px;
+        }
+
+        .exp-icon {
+            width: 55px;
+            height: 55px;
+            padding: 2px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .exp-content {
+            flex: 1;
+        }
+
+        .company {
+            margin: 4px 0;
+        }
+
+        .date {
+            margin: 0 0 14px;
+            opacity: 0.85;
+        }
+
+        .exp-content h2 {
+            margin: 0;
+        }
     </style>
   </head>
 
   <body>
-    <a href="/index.html" >
+    <a href="/index.html">
         <video id="bg" autoplay muted loop playsinline>
             <source src="../media/backgroundVideo.mp4" type="video/mp4">
         </video>
-        </a>
+    </a>
 
-    <button class="glass3d panel main"><span>sample text</span></button>
-    
-    <a href="/index.html" >
+    <div class="glass3d panel main">
+        <div class="main-content">
+
+            <div class="experience">
+                <img src="../media/truthdrift.png" class="exp-icon">
+
+                <div class="exp-content">
+                    <h2>Data & Engineering Intern</h2>
+                    <p><i>OceanFirst Bank, Summer 2026</i></p>
+                </div>
+            </div>
+
+            <ul class="experience-list">
+                <li>Developed data quality and monitoring alerts on Databricks.</li>
+                <li>Debugged, extracted, and analyzed financial datasets.</li>
+                <p><b>____________________________________________</b></p>
+            </ul>
+
+            <div class="experience">
+                <img src="../media/ewi.png" class="exp-icon">
+
+                <div class="exp-content">
+                    <h2>Data & Engineering Intern</h2>
+                    <p><i>OceanFirst Bank, Summer 2026</i></p>
+                </div>
+            </div>
+
+            <ul class="experience-list">
+                <li>Developed data quality and monitoring alerts on Databricks.</li>
+                <li>Debugged, extracted, and analyzed financial datasets.</li>
+                <p><b>____________________________________________</b></p>
+            </ul>
+
+
+            <div class="experience">
+                <img src="../media/audioamp.png" class="exp-icon">
+
+                <div class="exp-content">
+                    <h2>Data & Engineering Intern</h2>
+                    <p><i>OceanFirst Bank, Summer 2026</i></p>
+                </div>
+            </div>
+
+            <ul class="experience-list">
+                <li>Developed data quality and monitoring alerts on Databricks.</li>
+                <li>Debugged, extracted, and analyzed financial datasets.</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <a href="/index.html">
         <button class="glass3d back-btn back">
             <img src="../media/back.png" alt="Back">
         </button>
     </a>
 
     <script>
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll("a[href]").forEach(link => {
+            link.addEventListener("click", function(e) {
+                const href = this.getAttribute("href");
+                const targetURL = new URL(href, window.location.href);
+
+                if (targetURL.href === window.location.href) return;
+
                 e.preventDefault();
-                const href = this.href;
-                document.querySelectorAll('.panel, .back-btn').forEach(el => {
-                    el.classList.add('fade');
+
+                document.querySelectorAll(".panel, .back-btn").forEach(el => {
+                    el.classList.add("fade");
                 });
-                setTimeout(() => { window.location.href = href; }, 400);
+
+                setTimeout(() => {
+                    window.location.href = targetURL.href;
+                }, 400);
             });
         });
     </script>
-
   </body>
 </html>
